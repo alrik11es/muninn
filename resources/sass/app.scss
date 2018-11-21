@@ -8,6 +8,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+$glyphicons-halflings-class-prefix: glyphicon !default;
+$glyphicons-halflings-font-base-size: 12px !default;
+$glyphicons-halflings-include-bonus: false !default;
+$glyphicons-halflings-font-path: '../fonts' !default;
+@import "~glyphicons-halflings/scss/glyphicons-halflings";
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/agents', 'HomeController@index')->name('agents');
+Route::get('/events', 'HomeController@index')->name('events');
+Route::get('/scenarios', 'HomeController@index')->name('scenarios');
+Route::get('/credentials', 'HomeController@index')->name('credentials');
+Route::get('/services', 'HomeController@index')->name('services');

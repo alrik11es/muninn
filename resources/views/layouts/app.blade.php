@@ -24,21 +24,62 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Muninn') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    @auth
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Agents <span class="caret"></span>
+                            </a>
 
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">
+                                    <span class="glyphicon glyphicon-plus"></span> {{ __('New agent') }}
+                                </a>
+
+                                <a class="dropdown-item" href="">
+                                    <span class="glyphicon glyphicon-refresh"></span> {{ __(' Run event propagation') }}
+                                </a>
+
+                                <a class="dropdown-item" href="">
+                                    <span class="glyphicon glyphicon-random"></span> {{ __('View diagram') }}
+                                </a>
+
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('scenarios') }}">{{ __('Scenarios') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('events') }}">{{ __('Events') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('credentials') }}">{{ __('Credentials') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('services') }}">{{ __('Services') }}</a>
+                        </li>
                     </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @auth
+                        <li class="nav-item">
+                            <form>
+                                <input type="email" class="form-control" id="searchForm" placeholder="Search">
+                            </form>
+                        </li>
+                        @endauth
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -55,6 +96,23 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="">
+                                        {{ __('Account') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="">
+                                        {{ __('Job Management') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="">
+                                        {{ __('User Management') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="https://github.com/alrik11es/muninn">
+                                        {{ __('About') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
