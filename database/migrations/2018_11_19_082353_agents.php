@@ -17,6 +17,7 @@ class Agents extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('agent_class');
+            $table->integer('scenario_id');
             $table->integer('hours_keep_events');
             $table->boolean('propagate_immediately');
             $table->boolean('working');
