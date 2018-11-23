@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Muninn') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -40,6 +40,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">
+                                    <span class="glyphicon glyphicon-th-list"></span> {{ __('See all') }}
+                                </a>
+
                                 <a class="dropdown-item" href="">
                                     <span class="glyphicon glyphicon-plus"></span> {{ __('New agent') }}
                                 </a>

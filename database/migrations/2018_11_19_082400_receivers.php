@@ -15,8 +15,8 @@ class Receivers extends Migration
     {
         Schema::create('receivers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sender_agent_id');
-            $table->integer('receiver_agent_id');
+            $table->integer('sender_agent_id')->unsigned();
+            $table->integer('receiver_agent_id')->unsigned();
             $table->timestamps();
         });
     }

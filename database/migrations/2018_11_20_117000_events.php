@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AgentScenario extends Migration
+class Events extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AgentScenario extends Migration
      */
     public function up()
     {
-        Schema::create('agent_scenario', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('agent_id')->unsigned();
-            $table->integer('scenario_id')->unsigned();
+            $table->json('log');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class AgentScenario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agent_scenario');
+        Schema::dropIfExists('events');
     }
 }

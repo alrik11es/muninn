@@ -15,6 +15,7 @@ class Scenarios extends Migration
     {
         Schema::create('scenarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('background_color');
             $table->string('foreground_color');

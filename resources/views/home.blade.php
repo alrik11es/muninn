@@ -27,7 +27,7 @@
     <div class='row'>
         <div class='col-md-6'>
             <p>
-                You have created <span class="text-success">17 agents</span>.
+                You have created <span class="text-success">{{ $agents_count }} agents</span>.
             </p>
             <p>
                 <a class="btn btn-primary" href="/agents">View <i class="icon-chevron-right"></i></a>
@@ -36,8 +36,8 @@
         <div class='col-md-6'>
             <p>
                 Your agents have recorded
-                <span class="text-success">11 events recently</span> and
-                <span class="">80 events in total</span>.
+                <span class="text-success">{{ $recent_events_count }} events recently</span> and
+                <span class="">{{ $events_count }} events in total</span>.
             </p>
             <p>
                 <a class="btn btn-primary" href="/events">View <i class="icon-chevron-right"></i></a>
