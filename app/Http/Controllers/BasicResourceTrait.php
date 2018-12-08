@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
@@ -19,8 +20,13 @@ trait BasicResourceTrait
     public function index()
     {
         $this->entity = $this->getModelFromClassName(get_called_class());
+        $name = explode('\\', $this->entity);
+        $name = str_plural(strtolower(last($name)));
+        if (preg_match('/User/', $this->entity)) {
+            $this->entity = User::class;
+        }
         $entity = new $this->entity();
-        return view('scenarios', ['scenarios' => $entity->all()]);
+        return view($name, [$name => $entity->all()]);
     }
 
     /**
@@ -207,30 +213,6 @@ trait BasicResourceTrait
         return $entity;
     }
 
-    public function massiveUpdate(Request $request)
-    {
-        $request_query = $request->get('q');
-        $queryFetcher = new QueryFetcher();
-        $queryFetcher->setEntity(new $this->entity());
-        $queryFetcher->setRequestQuery($request_query);
-        $query = $queryFetcher->getQuery();
-        $query->update($request->get('update'));
-        $response = 'ok';
-        return response()->json($response);
-    }
-
-    public function massiveDestroy(Request $request)
-    {
-        $request_query = $request->get('q');
-        $queryFetcher = new QueryFetcher();
-        $queryFetcher->setEntity(new $this->entity());
-        $queryFetcher->setRequestQuery($request_query);
-        $query = $queryFetcher->getQuery();
-        $query->delete();
-        $response = 'ok';
-        return response()->json($response);
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -249,15 +231,6 @@ trait BasicResourceTrait
     {
         $this->entity = $this->getModelFromClassName(get_called_class());
         return new $this->entity();
-    }
-
-    /**
-     * @param Request $request
-     * @return array|mixed
-     */
-    private function getRequestQuery(Request $request)
-    {
-        return json_decode($request->get('q')) ?? [];
     }
 
     private function getModelFromClassName($class)

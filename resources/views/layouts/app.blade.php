@@ -109,7 +109,7 @@
                                         {{ __('Job Management') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('users') }}">
                                         {{ __('User Management') }}
                                     </a>
 

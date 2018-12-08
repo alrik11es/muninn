@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/agents', 'HomeController@index')->name('agents');
 Route::get('/events', 'HomeController@index')->name('events');
 
+Route::get('/users', 'UserController@index')->name('users');
+Route::get('/users/new', 'UserController@createEdit');
+Route::get('/users/{id}', 'UserController@createEdit');
+
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');
 Route::get('/scenarios/new', 'ScenarioController@createEdit');
 Route::get('/scenarios/{id?}/new', 'ScenarioController@createEdit');
