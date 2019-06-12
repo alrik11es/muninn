@@ -21,11 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/agents', 'HomeController@index')->name('agents');
 Route::get('/events', 'HomeController@index')->name('events');
 
-Route::get('/agents', 'ScenarioController@index')->name('agents');
-Route::get('/agents/new', 'ScenarioController@createEdit')->name('new-agent');
-Route::post('/agents/{id?}', 'ScenarioController@createEdit');
-Route::post('/agents/new', 'ScenarioController@createEdit');
-Route::post('/agents/store', 'ScenarioController@createEdit');
+Route::get('/agents', 'AgentController@index')->name('agents');
+Route::get('/agents/new', 'AgentController@createEdit')->name('new-agent');
+Route::post('/agents/{id?}', 'AgentController@createEdit');
+Route::post('/agents/new', 'AgentController@createEdit');
+Route::post('/agents/store', 'AgentController@createEdit');
 
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');
 Route::get('/scenarios/new', 'ScenarioController@createEdit');
