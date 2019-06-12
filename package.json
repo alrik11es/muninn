@@ -20,6 +20,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "@johmun/vue-tags-input": "^1.6.0",
         "glyphicons-halflings": "^1.9.1"
     }
 }

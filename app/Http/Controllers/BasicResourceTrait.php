@@ -29,7 +29,7 @@ trait BasicResourceTrait
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function createEdit($id = null, Request $request)
+    public function createEdit(Request $request, $id = null)
     {
         if($id) {
             $entity = $this->getNewEntity();
@@ -64,9 +64,6 @@ trait BasicResourceTrait
         $entity = $this->getNewEntity();
         $object = $entity->where('id', $id);
         $this->applyRelations($request, $object);
-        if ($this->getNewEntity()->getModel() instanceof TranslatableInterface) {
-            $object->with('translations');
-        }
         return response()->json($object->first());
     }
 
@@ -205,30 +202,6 @@ trait BasicResourceTrait
             }
         }
         return $entity;
-    }
-
-    public function massiveUpdate(Request $request)
-    {
-        $request_query = $request->get('q');
-        $queryFetcher = new QueryFetcher();
-        $queryFetcher->setEntity(new $this->entity());
-        $queryFetcher->setRequestQuery($request_query);
-        $query = $queryFetcher->getQuery();
-        $query->update($request->get('update'));
-        $response = 'ok';
-        return response()->json($response);
-    }
-
-    public function massiveDestroy(Request $request)
-    {
-        $request_query = $request->get('q');
-        $queryFetcher = new QueryFetcher();
-        $queryFetcher->setEntity(new $this->entity());
-        $queryFetcher->setRequestQuery($request_query);
-        $query = $queryFetcher->getQuery();
-        $query->delete();
-        $response = 'ok';
-        return response()->json($response);
     }
 
     /**

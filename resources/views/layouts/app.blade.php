@@ -40,11 +40,11 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('agents') }}">
                                     <span class="glyphicon glyphicon-th-list"></span> {{ __('See all') }}
                                 </a>
 
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('new-agent') }}">
                                     <span class="glyphicon glyphicon-plus"></span> {{ __('New agent') }}
                                 </a>
 
