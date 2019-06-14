@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agent;
+use App\Models\Event;
 use App\Models\Scenario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 
-class AgentController extends Controller
+class EventController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,7 +21,7 @@ class AgentController extends Controller
 
     public function getNewEntity()
     {
-        return new Agent();
+        return new Event();
     }
 
     /**
@@ -33,20 +32,7 @@ class AgentController extends Controller
     public function index()
     {
         $entity = $this->getNewEntity();
-        return view('agents', ['agents' => $entity->all()]);
-    }
-
-    public function agentsList()
-    {
-        $data = new \stdClass();
-
-        $data->list = [];
-        foreach (Config::get('muninn.agents') as $classname) {
-            $agent = new $classname();
-            $data->list[] = $agent->getAgentInfo();
-        }
-
-        return response()->json($data);
+        return view('events', ['events' => $entity->all()]);
     }
 
     /**
@@ -60,9 +46,9 @@ class AgentController extends Controller
         if($id) {
             $entity = $this->getNewEntity();
             $object = $entity->where('id', $request->get('id'));
-            return view('agents', ['agent' => $object]);
+            return view('events', ['event' => $object]);
         } else {
-            return view('createEditAgent');
+            return view('createEditEvent');
         }
     }
 

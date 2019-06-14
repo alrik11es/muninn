@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@johmun/vue-tags-input": "^1.6.0",
-        "glyphicons-halflings": "^1.9.1"
+        "glyphicons-halflings": "^1.9.1",
+        "vue-markdown": "^2.2.4"
     }
 }

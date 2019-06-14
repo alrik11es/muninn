@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/agents', 'HomeController@index')->name('agents');
-Route::get('/events', 'HomeController@index')->name('events');
+Route::get('/user', 'UserController@account')->name('account');
+
+Route::get('/events', 'EventController@index')->name('events');
 
 Route::get('/agents', 'AgentController@index')->name('agents');
 Route::get('/agents/new', 'AgentController@createEdit')->name('new-agent');
@@ -35,3 +37,5 @@ Route::post('/scenarios/store', 'ScenarioController@createEdit');
 
 Route::get('/credentials', 'HomeController@index')->name('credentials');
 Route::get('/services', 'HomeController@index')->name('services');
+
+
