@@ -13,7 +13,11 @@ class AddFaasFunctions extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('of_funcs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('directory');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class AddFaasFunctions extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('of_funcs');
     }
 }

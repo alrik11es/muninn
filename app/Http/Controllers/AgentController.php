@@ -47,7 +47,7 @@ class AgentController extends Controller
         if($id) {
             $entity = $this->getNewEntity();
             $object = $entity->where('id', $request->get('id'));
-            return view('agents', ['agent' => $object]);
+            return view('createEditAgent', ['agent' => $object]);
         } else {
             return view('createEditAgent');
         }

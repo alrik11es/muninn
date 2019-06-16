@@ -21,7 +21,7 @@
         {{--</div>--}}
 
         <div class="card">
-            <div class="card-header">Your Agents</div>
+            <div class="card-header">Your Functions</div>
 
             <div class="card-body">
 
