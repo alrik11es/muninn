@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agent;
+use App\Models\Faas;
 use App\Models\Scenario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
-class AgentController extends Controller
+class FunctionController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,7 +22,7 @@ class AgentController extends Controller
 
     public function getNewEntity()
     {
-        return new Agent();
+        return new Faas();
     }
 
     /**
@@ -33,7 +33,7 @@ class AgentController extends Controller
     public function index()
     {
         $entity = $this->getNewEntity();
-        return view('agents', ['agents' => $entity->all()]);
+        return view('functions', ['functions' => $entity->all()]);
     }
 
     /**
@@ -47,9 +47,9 @@ class AgentController extends Controller
         if($id) {
             $entity = $this->getNewEntity();
             $object = $entity->where('id', $request->get('id'));
-            return view('agents', ['agent' => $object]);
+            return view('functions', ['function' => $object]);
         } else {
-            return view('createEditAgent');
+            return view('createEditFunction');
         }
     }
 

@@ -59,6 +59,21 @@
 
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Open FaaS <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('functions') }}">
+                                    <span class="glyphicon glyphicon-th-list"></span> {{ __('Functions') }}
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('new-function') }}">
+                                    <span class="glyphicon glyphicon-plus"></span> {{ __('New function') }}
+                                </a>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('scenarios') }}">{{ __('Scenarios') }}</a>
                         </li>

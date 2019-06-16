@@ -23,6 +23,12 @@ Route::get('/user', 'UserController@account')->name('account');
 
 Route::get('/events', 'EventController@index')->name('events');
 
+Route::get('/functions', 'AgentController@index')->name('functions');
+Route::get('/functions/new', 'AgentController@createEdit')->name('new-function');
+Route::post('/functions/{id?}', 'AgentController@createEdit');
+Route::post('/functions/new', 'AgentController@createEdit');
+Route::post('/functions/store', 'AgentController@createEdit');
+
 Route::get('/agents', 'AgentController@index')->name('agents');
 Route::get('/agents/new', 'AgentController@createEdit')->name('new-agent');
 Route::post('/agents/{id?}', 'AgentController@createEdit');
