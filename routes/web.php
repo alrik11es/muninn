@@ -23,11 +23,11 @@ Route::get('/user', 'UserController@account')->name('account');
 
 Route::get('/events', 'EventController@index')->name('events');
 
-Route::get('/functions', 'FunctionController@index')->name('functions');
-Route::get('/functions/new', 'FunctionController@createEdit')->name('new-function');
-Route::post('/functions/{id?}', 'FunctionController@createEdit');
-Route::post('/functions/new', 'FunctionController@createEdit');
-Route::post('/functions/store', 'FunctionController@createEdit');
+Route::get('/functions', '\App\OpenFaas\Controllers\FunctionController@index')->name('functions');
+Route::get('/functions/new', '\App\OpenFaas\Controllers\FunctionController@createEdit')->name('new-function');
+Route::post('/functions/{id?}', '\App\OpenFaas\Controllers\FunctionController@createEdit');
+Route::post('/functions/new', '\App\OpenFaas\Controllers\FunctionController@createEdit');
+Route::post('/functions/store', '\App\OpenFaas\Controllers\FunctionController@createEdit');
 
 Route::get('/agents', 'AgentController@index')->name('agents');
 Route::get('/agents/new', 'AgentController@createEdit')->name('new-agent');

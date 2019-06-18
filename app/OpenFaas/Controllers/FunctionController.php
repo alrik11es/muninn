@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\OpenFaas\Controllers;
 
-use App\Models\Faas;
+use App\Http\Controllers\Controller;
 use App\Models\Scenario;
+use App\OpenFaas\Models\Faas;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;

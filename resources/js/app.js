@@ -36,6 +36,22 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
+Vue.component('editor', {
+    components: {
+        editor: require('vue2-ace-editor'),
+    },
+    methods: {
+        editorInit: function () {
+            require('brace/ext/language_tools')  //language extension prerequsite...
+            require('brace/mode/html')
+            require('brace/mode/javascript')    //language
+            require('brace/mode/less')
+            require('brace/theme/chrome')
+            require('brace/snippets/javascript') //snippet
+        }
+    },
+});
+
 Vue.component(
     'editor',
     require('vue2-ace-editor')

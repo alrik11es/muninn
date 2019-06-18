@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
 
+        \App\OpenFaas\OpenFaasProvider::class,
+
         /*
          * Application Service Providers...
          */

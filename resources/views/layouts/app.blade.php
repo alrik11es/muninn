@@ -59,12 +59,20 @@
 
                             </div>
                         </li>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Open FaaS <span class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-item">
+                                    @if (!resolve('\App\OpenFaas\OpenFaas')->existsOnSystem())
+                                        <span class="badge badge-warning">Open FaaS CLI not available</span>
+                                        @else
+                                        <span class="badge badge-success">Open FaaS CLI found</span>
+                                    @endif
+                                </div>
+
                                 <a class="dropdown-item" href="{{ route('functions') }}">
                                     <span class="glyphicon glyphicon-th-list"></span> {{ __('Functions') }}
                                 </a>

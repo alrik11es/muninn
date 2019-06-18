@@ -13,9 +13,12 @@ class AddFaasFunctions extends Migration
      */
     public function up()
     {
-        Schema::create('of_funcs', function (Blueprint $table) {
+        Schema::create('funcs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('directory');
+            $table->string('url');
+            $table->json('config');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class AddFaasFunctions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('of_funcs');
+        Schema::dropIfExists('funcs');
     }
 }
