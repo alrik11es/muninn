@@ -51634,6 +51634,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -51650,7 +51666,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        getAgent: function getAgent(id) {},
+        update: function update() {
+            this.$forceUpdate();
+        },
+        getForm: function getForm(id) {},
         getAgentList: function getAgentList() {
             var _this = this;
 
@@ -70726,64 +70745,95 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "agent_name" } }, [
-        _vm._v("Select agent type")
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "agent_name" } }, [
+            _vm._v("Select agent type")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selected_agent,
+                  expression: "selected_agent"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "agent_name" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selected_agent = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.agents, function(agent) {
+              return _c("option", {
+                domProps: { value: agent, innerHTML: _vm._s(agent.name) }
+              })
+            })
+          ),
+          _vm._v(" "),
+          _vm.selected_agent
+            ? _c("div", [
+                _vm._v("\n                    form\n                ")
+              ])
+            : _vm._e()
+        ])
       ]),
       _vm._v(" "),
-      _c(
-        "select",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.selected_agent,
-              expression: "selected_agent"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "agent_name" },
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
+      _c("div", { staticClass: "col" }, [
+        _vm.selected_agent
+          ? _c(
+              "div",
+              [
+                _c("vue-markdown", {
+                  attrs: { source: _vm.selected_agent.description }
                 })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.selected_agent = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
-            }
-          }
-        },
-        _vm._l(_vm.agents, function(agent) {
-          return _c("option", { domProps: { value: agent } }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(agent.name) +
-                "\n                "
+              ],
+              1
             )
-          ])
-        })
-      )
-    ]),
-    _vm._v(" "),
-    _vm.selected_agent
-      ? _c(
-          "div",
-          [
-            _c("vue-markdown", [_vm._v(_vm._s(_vm.selected_agent.description))])
-          ],
-          1
-        )
-      : _vm._e()
+          : _vm._e()
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "scenario_name" } }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          placeholder: "Name your Agent",
+          type: "text",
+          name: "agent[name]",
+          id: "scenario_name"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

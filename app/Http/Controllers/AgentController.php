@@ -102,4 +102,5 @@ class AgentController extends Controller
 
         return response()->json($object);
     }
+
 }

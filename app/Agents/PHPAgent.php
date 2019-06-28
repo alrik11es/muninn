@@ -5,12 +5,12 @@ class PHPAgent
 {
     public function getName()
     {
-        return 'Open FaaS function call Agent';
+        return 'PHP Agent';
     }
 
     public function getDescription()
     {
-        return 'This agent calls a **defined** Open FaaS function';
+        return 'This agent calls PHP code';
     }
 
     public function run($event)
@@ -20,7 +20,7 @@ class PHPAgent
 
     public function showForm()
     {
-        $contents = view('agents/openfaas.blade.php', ['openfaas_functions' => ['f1', 'f2']])->render();
+        $contents = view('agents/php.blade.php', ['openfaas_functions' => ['f1', 'f2']])->render();
         return $contents;
     }
 }
