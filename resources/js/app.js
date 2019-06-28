@@ -36,26 +36,26 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue')
 );
 
-Vue.component('editor', {
-    components: {
-        editor: require('vue2-ace-editor'),
-    },
-    methods: {
-        editorInit: function () {
-            require('brace/ext/language_tools')  //language extension prerequsite...
-            require('brace/mode/html')
-            require('brace/mode/javascript')    //language
-            require('brace/mode/less')
-            require('brace/theme/chrome')
-            require('brace/snippets/javascript') //snippet
-        }
-    },
-});
-
-Vue.component(
-    'editor',
-    require('vue2-ace-editor')
-);
+// Vue.component('editor', {
+//     components: {
+//         editor: require('vue2-ace-editor'),
+//     },
+//     methods: {
+//         editorInit: function () {
+//             require('brace/ext/language_tools');
+//             require('brace/mode/html');
+//             require('brace/mode/javascript');
+//             require('brace/mode/less');
+//             require('brace/theme/chrome');
+//             require('brace/snippets/javascript');
+//         }
+//     },
+// });
+//
+// Vue.component(
+//     'editor',
+//     require('vue2-ace-editor')
+// );
 
 
 // const files = require.context('./', true, /\.vue$/i)
@@ -70,3 +70,25 @@ Vue.component(
 const app = new Vue({
     el: '#app'
 });
+
+import 'ace-builds/src-min-noconflict/ace' // Load Ace Editor
+
+// Import initial theme and mode so we don't have to wait for 2 extra HTTP requests
+import 'ace-builds/src-min-noconflict/theme-chrome'
+import 'ace-builds/src-min-noconflict/mode-php'
+
+// cdnjs didn't have a "no-conflict" version, so we'll use jsdelivr
+const CDN = 'https://cdn.jsdelivr.net/npm/ace-builds@1.3.3/src-min-noconflict';
+
+// Now we tell ace to use the CDN locations to look for files
+ace.config.set('basePath', CDN);
+ace.config.set('modePath', CDN);
+ace.config.set('themePath', CDN);
+ace.config.set('workerPath', CDN);
+
+// Create Editor
+const editor = ace.edit('editor');
+
+// Set Editor Theme and Mode
+editor.setTheme('ace/theme/chrome');
+editor.session.setMode('ace/mode/php');

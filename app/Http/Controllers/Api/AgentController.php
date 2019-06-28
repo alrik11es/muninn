@@ -21,22 +21,11 @@ class AgentController extends Controller
             $a->classname = $classname;
             $a->name = $agent->getName();
             $a->description = $agent->getDescription();
+            $a->form = $agent->showForm();
             $data->list[] = $a;
             $i++;
         }
 
         return response()->json($data);
-    }
-
-
-    public function renderForm(Request $request)
-    {
-        foreach (Config::get('muninn.agents') as $classname) {
-            if ($classname == $request->get('class')) {
-                $a = new \stdClass();
-                $agent = new $classname();
-                return $agent->showForm();
-            }
-        }
     }
 }

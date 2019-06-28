@@ -20,7 +20,7 @@ class PHPAgent
 
     public function showForm()
     {
-        $contents = view('agents/php.blade.php', ['openfaas_functions' => ['f1', 'f2']])->render();
+        $contents = view('agents/php', ['openfaas_functions' => ['f1', 'f2']])->render();
         return $contents;
     }
 }

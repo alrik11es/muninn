@@ -17,12 +17,13 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
-        "vue": "^2.5.17",
-        "vue2-ace-editor": "0.0.13"
+        "vue": "^2.5.17"
     },
     "dependencies": {
         "@johmun/vue-tags-input": "^1.6.0",
+        "ace-builds": "^1.4.5",
         "glyphicons-halflings": "^1.9.1",
+        "v-runtime-template": "^1.10.0",
         "vue-markdown": "^2.2.4"
     }
 }
