@@ -7,7 +7,7 @@
 
             <div class="card-body">
 
-                <form class="new_scenario" id="new_scenario" action="/scenarios" accept-charset="UTF-8" method="post">
+                <form class="new_scenario" id="new_scenario" action="/agents/store" accept-charset="UTF-8" method="post">
                     {{ csrf_field() }}
 
                     <agent-selector></agent-selector>
@@ -25,7 +25,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <a class="btn btn-default" href="/scenarios"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                        <a class="btn btn-default" href="/agents"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
                     </div>
                 </div>
             </div>

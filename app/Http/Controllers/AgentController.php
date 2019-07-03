@@ -62,10 +62,21 @@ class AgentController extends Controller
     public function store(Request $request)
     {
         /** @var Model $object */
-        $object = $this->getNewEntity();
+        $agent = $this->getNewEntity();
+        $options = new \stdClass();
+        $options->code = $request->get('code');
 
+        $agent->agent_config = json_encode($options);
+        $agent->name = $request->get('name');
+        $agent->agent_class = $request->get('classname');
+        $agent->user_id = \Auth::user()->id;
+        $agent->hours_keep_events = $request->get('hours_keep_events');
+        $agent->schedule = $request->get('schedule');
+        $agent->propagate_immediately = false;
+        $agent->working = false;
+        $agent->save();
 
-        return response()->json($object, 201);
+        return response()->redirectTo('/');
     }
 
     /**

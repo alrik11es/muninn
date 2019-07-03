@@ -47,12 +47,12 @@
                                 <span class="glyphicon glyphicon-unchecked"></span>
                             </td>
                             <td class="">
-                                <a href="/agents/43?return=%2Fagents">Numero motos controller</a>
+                                <a href="/agents/{{ $agent->id }}">{{ $agent->name }}</a>
                                 <br>
-                                <span class="text-muted">Website Agent</span>
+                                <span class="text-muted">{{ $agent->agent_class }}</span>
                             </td>
                             <td class="">
-                                ~11h
+                                {{ $agent->created_at->format('d-m-Y') }}
                             </td>
                             <td class="">
                                 Every 12h
@@ -69,7 +69,13 @@
                             <td class="">
                                 <a href="/agents/43/events?return=%2Fagents">1</a>
                             </td>
-                            <td><span class="label label-success">Yes</span></td>
+                            <td>
+                                @if ($agent->working)
+                                    <span class="badge badge-success">Yes</span>
+                                @else
+                                    <span class="badge badge-danger">No</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">

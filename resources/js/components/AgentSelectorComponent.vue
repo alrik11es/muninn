@@ -13,6 +13,8 @@
 
                 <div v-if="selected_agent_type">
 
+                    <input type="hidden" name="classname" v-bind:value="selected_agent_type.classname">
+
                     <div class="form-group">
                         <label for="agent_name">Name</label>
                         <input class="form-control" placeholder="Name your Agent" type="text" name="name" id="agent_name">
@@ -81,7 +83,7 @@
 
                     <div class="form-group">
                         <label for="agent_keep_events_for">Keep events</label>
-                        <select class="form-control" name="keep_events_for" id="agent_keep_events_for">
+                        <select class="form-control" name="hours_keep_events" id="agent_keep_events_for">
                             <option value="0">Forever</option>
                             <option selected="selected" value="3600">1 hour</option>
                             <option value="21600">6 hours</option>

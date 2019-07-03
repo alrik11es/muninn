@@ -27,13 +27,13 @@ Route::get('/functions', '\App\OpenFaas\Controllers\FunctionController@index')->
 Route::get('/functions/new', '\App\OpenFaas\Controllers\FunctionController@createEdit')->name('new-function');
 Route::post('/functions/{id?}', '\App\OpenFaas\Controllers\FunctionController@createEdit');
 Route::post('/functions/new', '\App\OpenFaas\Controllers\FunctionController@createEdit');
-Route::post('/functions/store', '\App\OpenFaas\Controllers\FunctionController@createEdit');
+Route::post('/functions/store', '\App\OpenFaas\Controllers\FunctionController@store');
 
 Route::get('/agents', 'AgentController@index')->name('agents');
 Route::get('/agents/new', 'AgentController@createEdit')->name('new-agent');
-Route::post('/agents/{id?}', 'AgentController@createEdit');
-Route::post('/agents/new', 'AgentController@createEdit');
-Route::post('/agents/store', 'AgentController@createEdit');
+Route::post('/agents/store', 'AgentController@store');
+Route::post('/agents/{id}', 'AgentController@show');
+Route::get('/agents/{id}/edit', 'AgentController@createEdit')->name('edit');
 
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');
 Route::get('/scenarios/new', 'ScenarioController@createEdit');
