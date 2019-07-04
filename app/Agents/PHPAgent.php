@@ -1,6 +1,8 @@
 <?php
 namespace App\Agents;
 
+use App\Models\Agent;
+
 class PHPAgent
 {
     public function getName()
@@ -18,9 +20,15 @@ class PHPAgent
 
     }
 
-    public function showForm()
+    public function showForm($id = null)
     {
-        $contents = view('agents/php', ['openfaas_functions' => ['f1', 'f2']])->render();
+        if ($id) {
+            $agent = Agent::find($id);
+            $agent->agent_config = json_decode($agent->agent_config) ?? null;
+        } else {
+            $agent = [];
+        }
+        $contents = view('agents/php', ['agent' => $agent])->render();
         return $contents;
     }
 }

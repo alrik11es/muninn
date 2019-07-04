@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:api'])->group(function () {
+    Route::get('/agent/{id}/type', 'Api\\AgentController@type');
     Route::get('/agent/types', 'Api\\AgentController@types');
     Route::get('/agents', 'Api\\AgentController@index');
     Route::post('/agent/form', 'Api\\AgentController@renderForm');

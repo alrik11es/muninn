@@ -51567,70 +51567,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        agentId: null
+    },
     components: {
         VueMarkdown: __WEBPACK_IMPORTED_MODULE_0_vue_markdown___default.a,
         VRuntimeTemplate: __WEBPACK_IMPORTED_MODULE_1_v_runtime_template__["a" /* default */]
@@ -51650,17 +51594,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$forceUpdate();
         },
         getForm: function getForm(id) {},
-        getAgentTypesList: function getAgentTypesList() {
+        getAgentTypesList: function getAgentTypesList(id) {
             var _this = this;
 
             axios.get('/api/agent/types').then(function (response) {
                 _this.agent_types = response.data.list;
+            }).then(function () {
+                if (id) {
+                    axios.get('/api/agent/' + id + '/type').then(function (response) {
+                        _this.selected_agent_type = response.data;
+                    });
+                }
             });
         }
     },
     mounted: function mounted() {
-
-        this.getAgentTypesList();
+        if (this.agentId) {
+            this.getAgentTypesList(this.agentId);
+        } else {
+            this.getAgentTypesList();
+        }
         // axios.get('url', {});
         console.log('Component mounted.');
     }
@@ -70755,9 +70708,6 @@ var render = function() {
               staticClass: "form-control",
               attrs: { id: "select_a_type" },
               on: {
-                update: function($event) {
-                  _vm.update()
-                },
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter
                     .call($event.target.options, function(o) {
@@ -70790,57 +70740,11 @@ var render = function() {
                   domProps: { value: _vm.selected_agent_type.classname }
                 }),
                 _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Sources")]),
-                    _vm._v(" "),
-                    _c("vue-tags-input", {
-                      attrs: {
-                        tags: _vm.tags,
-                        "autocomplete-items": _vm.agents
-                      },
-                      on: {
-                        "tags-changed": function(newTags) {
-                          return (_vm.tags = newTags)
-                        }
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("Receivers")]),
-                    _vm._v(" "),
-                    _c("vue-tags-input", {
-                      attrs: {
-                        tags: _vm.tags,
-                        "autocomplete-items": _vm.agents
-                      },
-                      on: {
-                        "tags-changed": function(newTags) {
-                          return (_vm.tags = newTags)
-                        }
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
                 _c("v-runtime-template", {
                   attrs: { template: _vm.selected_agent_type.form }
-                })
+                }),
+                _vm._v(" "),
+                _vm._m(0)
               ],
               1
             )
@@ -70868,170 +70772,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "agent_name" } }, [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          placeholder: "Name your Agent",
-          type: "text",
-          name: "name",
-          id: "agent_name"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "agent_schedule" } }, [_vm._v("Schedule")]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "form-control",
-          attrs: { name: "schedule", id: "agent_schedule" }
-        },
-        [
-          _c("option", { attrs: { value: "every_1m" } }, [_vm._v("Every 1m")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_2m" } }, [_vm._v("Every 2m")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_5m" } }, [_vm._v("Every 5m")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_10m" } }, [
-            _vm._v("Every 10m")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_30m" } }, [
-            _vm._v("Every 30m")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_1h" } }, [_vm._v("Every 1h")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_2h" } }, [_vm._v("Every 2h")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_5h" } }, [_vm._v("Every 5h")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_12h" } }, [
-            _vm._v("Every 12h")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_1d" } }, [_vm._v("Every 1d")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_2d" } }, [_vm._v("Every 2d")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "every_7d" } }, [
-            _vm._v("Every Monday")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "midnight" } }, [_vm._v("Midnight")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1am" } }, [_vm._v("1am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "2am" } }, [_vm._v("2am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3am" } }, [_vm._v("3am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "4am" } }, [_vm._v("4am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "5am" } }, [_vm._v("5am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "6am" } }, [_vm._v("6am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "7am" } }, [_vm._v("7am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "8am" } }, [_vm._v("8am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "9am" } }, [_vm._v("9am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "10am" } }, [_vm._v("10am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "11am" } }, [_vm._v("11am")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "noon" } }, [_vm._v("Noon")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1pm" } }, [_vm._v("1pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "2pm" } }, [_vm._v("2pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3pm" } }, [_vm._v("3pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "4pm" } }, [_vm._v("4pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "5pm" } }, [_vm._v("5pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "6pm" } }, [_vm._v("6pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "7pm" } }, [_vm._v("7pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "8pm" } }, [_vm._v("8pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "9pm" } }, [_vm._v("9pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "10pm" } }, [_vm._v("10pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "11pm" } }, [_vm._v("11pm")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "never" } }, [_vm._v("Never")])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "agent_keep_events_for" } }, [
-        _vm._v("Keep events")
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "form-control",
-          attrs: { name: "hours_keep_events", id: "agent_keep_events_for" }
-        },
-        [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("Forever")]),
-          _vm._v(" "),
-          _c("option", { attrs: { selected: "selected", value: "3600" } }, [
-            _vm._v("1 hour")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "21600" } }, [_vm._v("6 hours")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "86400" } }, [_vm._v("1 day")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "172800" } }, [_vm._v("2 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "259200" } }, [_vm._v("3 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "345600" } }, [_vm._v("4 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "432000" } }, [_vm._v("5 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "604800" } }, [_vm._v("7 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1209600" } }, [_vm._v("14 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1814400" } }, [_vm._v("21 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "2592000" } }, [_vm._v("30 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3888000" } }, [_vm._v("45 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "7776000" } }, [_vm._v("90 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "15552000" } }, [_vm._v("180 days")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "31536000" } }, [_vm._v("365 days")])
-        ]
-      )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "div",
+          { staticClass: "form-actions", staticStyle: { clear: "both" } },
+          [
+            _c("input", {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "submit",
+                name: "commit",
+                value: "Save Agent",
+                "data-disable-with": "Save Scenario"
+              }
+            })
+          ]
+        )
+      ])
     ])
   }
 ]

@@ -35,4 +35,20 @@ class AgentController extends Controller
 
         return response()->json($data);
     }
+
+    public function type($id)
+    {
+        $agent = Agent::find($id);
+        $classname = $agent->agent_class;
+        $data = new \stdClass();
+
+        $agent = new $classname();
+        $data->classname = $classname;
+        $data->name = $agent->getName();
+        $data->text = $agent->getName();
+        $data->description = $agent->getDescription();
+        $data->form = $agent->showForm($id);
+
+        return response()->json($data);
+    }
 }

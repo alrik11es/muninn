@@ -45,8 +45,7 @@ class AgentController extends Controller
     public function createEdit(Request $request, $id = null)
     {
         if($id) {
-            $entity = $this->getNewEntity();
-            $object = $entity->where('id', $request->get('id'));
+            $object = Agent::find($id);
             return view('createEditAgent', ['agent' => $object]);
         } else {
             return view('createEditAgent');
@@ -59,10 +58,15 @@ class AgentController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id = null)
     {
-        /** @var Model $object */
-        $agent = $this->getNewEntity();
+        if ($id) {
+            $agent = Agent::find($id);
+        } else {
+            /** @var Model $object */
+            $agent = $this->getNewEntity();
+        }
+
         $options = new \stdClass();
         $options->code = $request->get('code');
 
@@ -76,7 +80,7 @@ class AgentController extends Controller
         $agent->working = false;
         $agent->save();
 
-        return response()->redirectTo('/');
+        return response()->redirectTo('/agents');
     }
 
     /**

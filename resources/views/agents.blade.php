@@ -25,7 +25,7 @@
 
             <div class="card-body">
 
-                <table class="table table-striped">
+                <table class="table">
                     <thead class="thead-dark">
                     <tr>
                         <th></th>
@@ -83,25 +83,25 @@
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
                                         <li>
-                                            <a tabindex="-1" rel="nofollow" data-method="post" href="/agents/43/run?return=%2Fagents"><span class="glyphicon glyphicon-refresh color-success"></span> Run</a>
+                                            <a tabindex="-1" rel="nofollow" data-method="post" href="/agents/{{ $agent->id }}/run?return=%2Fagents"><span class="glyphicon glyphicon-refresh color-success"></span> Run</a>
                                         </li>
 
                                         <li>
-                                            <a data-action-url="/agents/43/dry_runs" data-with-event-mode="maybe" tabindex="-1" onclick="Utils.handleDryRunButton(this)" href="#"><span class="glyphicon glyphicon-refresh"></span> Dry Run</a>
+                                            <a data-action-url="/agents/{{ $agent->id }}/dry_runs" data-with-event-mode="maybe" tabindex="-1" onclick="Utils.handleDryRunButton(this)" href="#"><span class="glyphicon glyphicon-refresh"></span> Dry Run</a>
                                         </li>
 
                                         <li>
-                                            <a href="/agents/43?return=%2Fagents"><span class="glyphicon glyphicon-eye-open"></span> Show</a>
+                                            <a href="/agents/{{ $agent->id }}?return=%2Fagents"><span class="glyphicon glyphicon-eye-open"></span> Show</a>
                                         </li>
 
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="/agents/43/edit?return=%2Fagents"><span class="glyphicon glyphicon-pencil"></span> Edit agent</a>
+                                            <a href="/agents/{{ $agent->id }}/edit?return=%2Fagents"><span class="glyphicon glyphicon-pencil"></span> Edit agent</a>
                                         </li>
 
                                         <li>
-                                            <a tabindex="-1" href="/agents/new?id=43"><i class="fa fa-copy"></i> Clone agent</a>
+                                            <a tabindex="-1" href="/agents/new?id={{ $agent->id }}"><i class="fa fa-copy"></i> Clone agent</a>
                                         </li>
 
                                         <li>

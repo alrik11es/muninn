@@ -31,7 +31,7 @@ Route::post('/functions/store', '\App\OpenFaas\Controllers\FunctionController@st
 
 Route::get('/agents', 'AgentController@index')->name('agents');
 Route::get('/agents/new', 'AgentController@createEdit')->name('new-agent');
-Route::post('/agents/store', 'AgentController@store');
+Route::post('/agents/store/{id?}', 'AgentController@store');
 Route::post('/agents/{id}', 'AgentController@show');
 Route::get('/agents/{id}/edit', 'AgentController@createEdit')->name('edit');
 
